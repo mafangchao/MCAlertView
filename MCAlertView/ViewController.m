@@ -22,12 +22,18 @@
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
-    MCAlertView *alertView = [[MCAlertView alloc] initWithAlertButtonType:MCAlertOne];
+    MCAlertView *alertView = [[MCAlertView alloc] initWithAlertButtonType:MCAlertTwo];
     alertView.cancleButtonText = @"算了";
     alertView.finishButtonText = @"认证";
     alertView.titleText = @"投资人认证";
     alertView.detailText = @"认证的投资人身份并通过审核,才可以与项目安排会议";
     [alertView show];
+    alertView.finishBlock = ^(){
+        NSLog(@"完成回调");
+    };
+    alertView.cancelBlock = ^(){
+        NSLog(@"取消回调");
+    };
 
 }
 
